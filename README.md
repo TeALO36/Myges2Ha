@@ -9,16 +9,17 @@ Cette intégration crée un calendrier interne (ex: `calendar.myges_t_krywak`) a
 1. Assurez-vous d'avoir installé [HACS](https://hacs.xyz/).
 2. Allez dans HACS > Intégrations.
 3. Cliquez sur les 3 points en haut à droite, puis "Dépôts personnalisés".
-4. Ajoutez l'URL de ce dépôt (`https://github.com/myges2ha/myges2ha`) avec la catégorie "Intégration".
+4. Ajoutez l'URL de ce dépôt (`https://github.com/myges2ha/myges2ha` ou votre propre URL) avec la catégorie "Intégration".
 5. Cliquez sur "Télécharger" et redémarrez Home Assistant.
 
-## ⚙️ Configuration
+## ⚙️ Configuration et Calendrier Cible
 
-1. Dans Home Assistant, allez dans **Paramètres > Appareils et services**.
-2. Cliquez sur **Ajouter une intégration** en bas à droite.
-3. Cherchez **MyGES to Home Assistant**.
-4. Saisissez vos identifiants (Nom d'utilisateur et mot de passe MyGES).
-5. (Optionnel) Sélectionnez le calendrier cible si vous souhaitez envoyer les événements vers un autre calendrier (ex: votre calendrier Google Agenda).
+1. **Prérequis pour Google Agenda :** Assurez-vous d'avoir configuré [l'intégration officielle Google Agenda de Home Assistant](https://www.home-assistant.io/integrations/google/). Repérez l'ID de l'entité de votre agenda (ex: `calendar.votre_adresse_email_gmail_com`).
+2. Dans Home Assistant, allez dans **Paramètres > Appareils et services**.
+3. Cliquez sur **Ajouter une intégration** en bas à droite.
+4. Cherchez **MyGES to Home Assistant**.
+5. Saisissez vos identifiants (Nom d'utilisateur et mot de passe MyGES).
+6. **Calendrier cible :** Sélectionnez l'entité de votre calendrier Google (ex: `calendar.votre_adresse_email_gmail_com`) parmi la liste pour que l'intégration puisse envoyer automatiquement vos cours vers Google Agenda.
 
 ## 📅 Fonctionnement
 
