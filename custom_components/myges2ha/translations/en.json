@@ -1,0 +1,23 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to MyGES",
+        "description": "Enter your MyGES credentials and select the target Google Calendar to sync your events to.",
+        "data": {
+          "username": "Username (e.g. t.krywak)",
+          "password": "Password",
+          "target_calendar": "Target Calendar (e.g. calendar.my_google_account)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect, please try again",
+      "invalid_auth": "Invalid authentication",
+      "unknown": "Unexpected error"
+    },
+    "abort": {
+      "already_configured": "Account is already configured"
+    }
+  }
+}
