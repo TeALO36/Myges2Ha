@@ -1,0 +1,12 @@
+{
+  "domain": "myges2ha",
+  "name": "MyGES to Home Assistant",
+  "codeowners": ["@jules"],
+  "config_flow": true,
+  "dependencies": ["calendar"],
+  "documentation": "https://github.com/myges2ha/myges2ha",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/myges2ha/myges2ha/issues",
+  "requirements": [],
+  "version": "1.0.0"
+}
