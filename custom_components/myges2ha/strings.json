@@ -5,9 +5,10 @@
         "title": "Connect to MyGES",
         "description": "Enter your MyGES credentials and select the target Google Calendar to sync your events to.",
         "data": {
-          "username": "Username (e.g. t.krywak)",
+          "username": "Username (e.g. p.nom)",
           "password": "Password",
-          "target_calendar": "Target Calendar (e.g. calendar.my_google_account)"
+          "target_calendar": "Target Calendar (e.g. calendar.my_google_account)",
+          "event_prefix": "Task type / Event prefix (e.g. Course)"
         }
       }
     },

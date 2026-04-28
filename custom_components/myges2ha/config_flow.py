@@ -6,7 +6,7 @@ from homeassistant import config_entries
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
-from .const import DOMAIN, CONF_USERNAME, CONF_PASSWORD, CONF_TARGET_CALENDAR
+from .const import DOMAIN, CONF_USERNAME, CONF_PASSWORD, CONF_TARGET_CALENDAR, CONF_EVENT_PREFIX
 from .myges_api import MyGesAPI
 
 _LOGGER = logging.getLogger(__name__)
@@ -57,6 +57,7 @@ class MyGesConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 vol.Required(CONF_USERNAME): str,
                 vol.Required(CONF_PASSWORD): str,
                 vol.Required(CONF_TARGET_CALENDAR): calendar_selector,
+                vol.Optional(CONF_EVENT_PREFIX, default="Cours"): str,
             }
         )
 

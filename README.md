@@ -2,7 +2,7 @@
 
 Intégration Home Assistant qui synchronise automatiquement votre emploi du temps MyGES (réseau Kordis/Skolae) vers votre Home Assistant et vos entités de calendrier Google.
 
-Cette intégration crée un calendrier interne (ex: `calendar.myges_t_krywak`) avec vos cours des prochaines semaines, et peut également synchroniser ces événements directement dans le calendrier Google officiel de votre choix.
+Cette intégration crée un calendrier interne (ex: `calendar.myges_p_nom`) avec vos cours des prochaines semaines, et peut également synchroniser ces événements directement dans le calendrier Google officiel de votre choix.
 
 ## 🚀 Installation via HACS (Recommandé)
 
