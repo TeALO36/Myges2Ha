@@ -22,11 +22,12 @@ class MyGesDataUpdateCoordinator(DataUpdateCoordinator):
     """Class to manage fetching MyGES data and syncing to Google Calendar."""
 
     def __init__(
-        self, hass: HomeAssistant, api: MyGesAPI, target_calendar: str
+        self, hass: HomeAssistant, api: MyGesAPI, target_calendar: str, event_prefix: str = ""
     ):
         """Initialize the coordinator."""
         self.api = api
         self.target_calendar = target_calendar
+        self.event_prefix = event_prefix
         super().__init__(
             hass,
             _LOGGER,
@@ -90,6 +91,8 @@ class MyGesDataUpdateCoordinator(DataUpdateCoordinator):
             # Map MyGES event to HA event fields
             for ges_evt in myges_events:
                 summary = ges_evt.get("name", "Cours MyGES")
+                if self.event_prefix:
+                    summary = f"{self.event_prefix} : {summary}"
 
                 # Convert timestamps from milliseconds
                 start_ts = ges_evt.get("start_date")
@@ -111,7 +114,7 @@ class MyGesDataUpdateCoordinator(DataUpdateCoordinator):
 
                 teacher = ges_evt.get("teacher", "")
                 modality = ges_evt.get("modality", "")
-                description = f"Professeur: {teacher}\nModalité: {modality}"
+                description = f"Professeur: {teacher}\nModalité: {modality}\n\n--- Créé par MyGES ---"
 
                 # A safer approach is to check if any existing event starts at
                 # exactly the same time with same title

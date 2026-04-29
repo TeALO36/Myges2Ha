@@ -5,9 +5,10 @@
         "title": "Connexion à MyGES",
         "description": "Entrez vos identifiants MyGES et sélectionnez le calendrier Google cible pour synchroniser vos événements.",
         "data": {
-          "username": "Nom d'utilisateur (ex. t.krywak)",
+          "username": "Nom d'utilisateur (ex. p.nom)",
           "password": "Mot de passe",
-          "target_calendar": "Calendrier Cible (ex. calendar.mon_compte_google)"
+          "target_calendar": "Calendrier Cible (ex. calendar.mon_compte_google)",
+          "event_prefix": "Type de tâche / Préfixe (ex. Cours)"
         }
       }
     },

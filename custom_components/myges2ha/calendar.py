@@ -77,6 +77,8 @@ class MyGesCalendarEntity(
         evt_data = next_evt["event"]
 
         summary = evt_data.get("name", "Cours")
+        if getattr(self.coordinator, "event_prefix", ""):
+            summary = f"{self.coordinator.event_prefix} : {summary}"
         rooms = [room.get("name") for room in evt_data.get("rooms", [])]
         location = ", ".join(rooms) if rooms else ""
         desc = (
@@ -131,6 +133,8 @@ class MyGesCalendarEntity(
             # Check if event overlaps with the requested range
             if evt_start < end_date and evt_end > start_date:
                 summary = evt.get("name", "Cours")
+                if getattr(self.coordinator, "event_prefix", ""):
+                    summary = f"{self.coordinator.event_prefix} : {summary}"
                 rooms = [room.get("name") for room in evt.get("rooms", [])]
                 location = ", ".join(rooms) if rooms else ""
                 desc = (

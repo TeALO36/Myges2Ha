@@ -5,7 +5,7 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
-from .const import DOMAIN, CONF_USERNAME, CONF_PASSWORD, CONF_TARGET_CALENDAR
+from .const import DOMAIN, CONF_USERNAME, CONF_PASSWORD, CONF_TARGET_CALENDAR, CONF_EVENT_PREFIX
 from .myges_api import MyGesAPI
 from .coordinator import MyGesDataUpdateCoordinator
 
@@ -30,7 +30,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         return False
 
     coordinator = MyGesDataUpdateCoordinator(
-        hass, api, entry.data[CONF_TARGET_CALENDAR]
+        hass, api, entry.data[CONF_TARGET_CALENDAR], entry.data.get(CONF_EVENT_PREFIX, "")
     )
 
     await coordinator.async_config_entry_first_refresh()
@@ -51,3 +51,20 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         hass.data[DOMAIN].pop(entry.entry_id)
 
     return unload_ok
+
+
+async def async_remove_entry(hass: HomeAssistant, entry: ConfigEntry) -> None:
+    """Handle removal of an entry."""
+    target_calendar = entry.data.get(CONF_TARGET_CALENDAR)
+    if not target_calendar:
+        return
+
+    _LOGGER.info(
+        "L'intégration MyGES a été désinstallée. Veuillez noter qu'en raison des limitations "
+        "actuelles des API de Home Assistant, il n'est pas possible de supprimer automatiquement "
+        "les événements du calendrier cible (%s) depuis cette intégration. "
+        "Cependant, tous les événements créés par l'intégration contiennent la mention "
+        "'--- Créé par MyGES ---' dans leur description. Vous pouvez rechercher cette mention "
+        "dans votre agenda (ex: Google Agenda) pour les identifier et les supprimer manuellement.",
+        target_calendar
+    )
